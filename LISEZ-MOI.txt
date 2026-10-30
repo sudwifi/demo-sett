@@ -1,0 +1,42 @@
+SUD WIFI · ESPACE CLIENT · DÉMO SETT 2026 (version hors ligne)
+================================================================
+
+Démarrer
+--------
+Double-cliquez sur « index.html ». La démo s'ouvre sur l'écran de connexion.
+Aucune connexion internet ni aucun compte n'est nécessaire.
+Navigateur conseillé : Chrome ou Edge.
+
+Pendant la démo
+---------------
+- Parcours conseillé : Connexion > Se connecter > Valider > Tableau de bord,
+  puis le menu de gauche.
+- Supervision : les boutons « Normal / Alerte / Grave » (en bas à droite)
+  simulent un incident. Touchez une borne pour voir son état.
+- Bouton rond ☰ en bas à droite : accès direct aux 7 écrans + plein écran.
+- Clavier : flèches ← → pour l'écran précédent / suivant, F pour le plein écran.
+- Un rechargement de page (F5) remet l'écran à zéro.
+
+Les liens externes (Canal+ Business, factures Axonaut, aide aux vacanciers,
+e-mail, téléphone) ont besoin d'internet : routeur 4G du stand.
+
+Installer sur les 4 PC
+----------------------
+1. Copiez le dossier « sud-wifi-demo-sett » sur le Bureau de chaque PC.
+2. Ouvrez index.html dans Chrome, puis ajoutez la page aux favoris.
+3. Avant le salon : désactivez la mise en veille de l'écran
+   (Paramètres > Système > Alimentation).
+
+Tablette
+--------
+Une tablette ouvre mal les fichiers locaux : utilisez la version en ligne
+(adresse GitHub Pages), puis « Ajouter à l'écran d'accueil ».
+Après une première ouverture avec internet, la démo reste disponible
+hors ligne depuis l'icône.
+Pour verrouiller la tablette sur la démo :
+- iPad : Réglages > Accessibilité > Accès guidé (triple-clic pour l'activer).
+- Android : Paramètres > Sécurité > Épinglage d'application.
+
+Rappel
+------
+Données fictives, camping anonymisé : ne pas citer de client réel.

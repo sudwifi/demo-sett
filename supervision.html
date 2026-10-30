@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#06405C">
+<title>Sud Wifi — Espace client · Supervision temps réel</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icone-192.png">
+<link rel="apple-touch-icon" href="assets/icone-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sud Wifi démo">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+body{margin:0;background:#FBF8F1;font-family:'Quicksand',system-ui,sans-serif;font-weight:500;color:#0E2A38}
+a{color:#007EB1}a:hover{color:#005F86}
+html,body{margin:0;height:100%;overflow:hidden;background:#06405C}
+#dc-root{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden}
+.demo-btn{position:fixed;right:14px;bottom:14px;z-index:50;width:40px;height:40px;border-radius:50%;border:none;background:rgba(6,64,92,.35);color:#fff;font-size:18px;cursor:pointer;opacity:.45;transition:opacity .2s}
+.demo-btn:hover,.demo-btn:focus-visible{opacity:1;background:#06405C}
+.demo-panel{position:fixed;right:14px;bottom:62px;z-index:50;width:260px;background:#fff;color:#0E2A38;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:14px;font-family:'Quicksand',system-ui,sans-serif;font-weight:500;display:flex;flex-direction:column;gap:4px}
+.demo-panel[hidden]{display:none}
+.demo-title{margin:0 0 6px;font-family:'Fira Sans',sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;color:#06405C}
+.demo-panel a{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:9px;color:#0E2A38;text-decoration:none;font-size:14px}
+.demo-panel a span{width:22px;height:22px;border-radius:50%;background:#E2F4FA;color:#005A80;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.demo-panel a:hover{background:#F2F9FC}
+.demo-panel a[aria-current]{background:#007EB1;color:#fff;font-weight:700}
+.demo-panel a[aria-current] span{background:#fff}
+.demo-fs{margin-top:6px;font-family:inherit;font-size:14px;font-weight:700;padding:10px;border:none;border-radius:9px;background:#FAC420;color:#06405C;cursor:pointer}
+.demo-hint{margin:6px 0 0;font-size:11px;color:#4A5A66;line-height:1.4}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-tpl">
+<div style="width: 1440px; height: 1000px; display: flex; background: #FBF8F1; font-family: 'Quicksand', system-ui, sans-serif; color: #0E2A38">
+
+<nav aria-label="Navigation principale" style="width: 256px; flex-shrink: 0; background: #06405C; color: #FFFFFF; display: flex; flex-direction: column; padding: 28px 18px; box-sizing: border-box; gap: 28px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 8px">
+<img src="assets/logo-sud-wifi-nav.png" alt="Sud Wifi" style="width: 124px; height: auto; display: block">
+<span style="font-size: 12px; color: #BFE3F0; letter-spacing: 0.12em; text-transform: uppercase">Espace client</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<a href="tableau-de-bord.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Tableau de bord</a>
+<a href="supervision.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 10px; background: #007EB1; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px">Supervision temps réel</a>
+<a href="suivi-sud-wifi.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Suivi Sud Wifi</a>
+<a href="acces-vacanciers.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Accès vacanciers</a>
+<a href="https://client.canalplus.com/?sc_intcmp=BUSINESS:USERMENU:CLIENT" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Canal+ Business<span aria-hidden="true">↗</span></a>
+<a href="https://axonaut.com/customerPortal/userZone/dashboard" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Factures, contrats et tickets<span aria-hidden="true">↗</span></a>
+<a href="mon-equipe.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Mon équipe</a>
+<a href="https://aide.wifi-camping-var.fr" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 10px; color: #E3F2F8; text-decoration: none; font-size: 15px">Aide aux vacanciers<span aria-hidden="true">↗</span></a>
+<div style="height: 1px; background: #0A5277; margin: 6px 4px"></div>
+<a href="#" aria-disabled="true" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; border-radius: 10px; color: #9FC3D6; text-decoration: none; font-size: 15px">Vidéosurveillance<span style="font-size: 11px; background: #0A5277; color: #E3F2F8; padding: 3px 7px; border-radius: 6px">bientôt</span></a>
+</div>
+<div style="margin-top: auto; background: #0A5277; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; color: #BFE3F0; text-transform: uppercase; letter-spacing: 0.06em">Votre interlocuteur</span>
+<span style="font-weight: 600; font-size: 15px">Anthony, votre technicien</span>
+<a href="tel:+33494030811" style="font-size: 16px; font-weight: 700; color: #FFFFFF; text-decoration: none">04 94 03 08 11</a>
+<a href="mailto:support@sudwifi.fr" style="margin-top: 4px; text-align: center; background: #FAC420; color: #06405C; text-decoration: none; font-weight: 700; padding: 11px; border-radius: 10px; font-size: 14px">Contacter Sud Wifi</a>
+<span style="font-size: 12px; color: #BFE3F0; text-align: center">support@sudwifi.fr</span>
+</div>
+</nav>
+
+<main style="flex-grow: 1; padding: 28px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px; overflow: hidden">
+<header style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #4A5A66">Camping de démonstration · 70 bornes Wifi</span>
+<h1 style="margin: 0; font-family: 'Fira Sans', sans-serif; font-size: 34px; font-weight: 700; letter-spacing: -0.02em">Supervision du réseau en temps réel</h1>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="font-size: 14px; color: #4A5A66">Dernier test : {{lastTest}} · tests toutes les 60 s</span>
+<button type="button" onClick="{{retest}}" style="font-family: inherit; font-size: 14px; font-weight: 700; padding: 11px 16px; min-height: 44px; border-radius: 10px; border: none; background: #007EB1; color: #FFFFFF; cursor: pointer">Relancer les tests</button>
+</div>
+</header>
+
+<section aria-label="Indicateurs" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+<div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #4A5A66">Bornes qui répondent</span>
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 26px; font-weight: 700; color: {{kpiColor}}">{{okCount}} / {{apCount}}</span>
+</div>
+<div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #4A5A66">Alertes en cours</span>
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 26px; font-weight: 700">{{alertCount}}</span>
+</div>
+<div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #4A5A66">Coffrets fibre</span>
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 26px; font-weight: 700">{{foCount}}</span>
+</div>
+<div style="background: #FFFFFF; border-radius: 14px; padding: 14px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #4A5A66">Disponibilité (30 jours)</span>
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 26px; font-weight: 700; color: #005A80">99,8 %</span>
+</div>
+</section>
+
+<div style="display: flex; gap: 18px; flex-grow: 1; min-height: 0">
+<section aria-label="Plan supervisé" style="width: 744px; height: 700px; flex-shrink: 0; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid #E3DDD1; background: #FFFFFF">
+<img src="assets/plan-camping-demo.jpg" alt="Plan du camping de démonstration" style="position: absolute; left: 0; top: 0; width: 744px; height: 700px; object-fit: fill">
+<sc-for list="{{marks}}" as="m" hint-placeholder-count="87">
+<button type="button" onClick="{{m.pick}}" aria-label="{{m.name}} : {{m.label}}" title="{{m.name}} : {{m.label}}" style="position: absolute; left: {{m.left}}; top: {{m.top}}; width: {{m.size}}; height: {{m.size}}; margin: 0; padding: 0; border-radius: {{m.radius}}; border: 2px solid {{m.ring}}; background: {{m.bg}}; color: {{m.fg}}; font-family: 'Fira Sans', sans-serif; font-weight: 700; font-size: 10px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(14, 42, 56, 0.35)">{{m.sym}}</button>
+</sc-for>
+</section>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+<section aria-label="État" aria-live="polite" style="border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 8px; background: {{status.bg}}; border: 1px solid {{status.border}}">
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 20px; font-weight: 700">{{status.title}}</span>
+<span style="font-size: 14px; color: #33434E; line-height: 1.45">{{status.text}}</span>
+</section>
+<section aria-label="Équipement sélectionné" style="background: #FFFFFF; border-radius: 16px; padding: 16px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; color: #4A5A66; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600">Équipement sélectionné</span>
+<span style="font-family: 'Fira Sans', sans-serif; font-size: 17px; font-weight: 700">{{sel.name}}</span>
+<span style="font-size: 13px; color: #4A5A66; line-height: 1.45">{{sel.text}}</span>
+</section>
+<section aria-label="Légende" style="background: #FFFFFF; border-radius: 16px; padding: 16px 18px; border: 1px solid #E3DDD1; display: flex; flex-direction: column; gap: 9px">
+<span style="font-size: 12px; color: #4A5A66; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600">Légende</span>
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px"><span style="width: 18px; height: 18px; border-radius: 50%; background: #1E8E4E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700">✓</span>Borne qui répond</span>
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px"><span style="width: 18px; height: 18px; border-radius: 50%; background: #F5A40F; color: #0E2A38; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700">!</span>Alerte, Sud Wifi intervient</span>
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px"><span style="width: 18px; height: 18px; border-radius: 50%; background: #C8322B; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700">✕</span>Incident grave</span>
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px"><span style="width: 12px; height: 12px; margin: 0 3px; border-radius: 2px; background: #007EB1"></span>Coffret fibre</span>
+</section>
+<section aria-label="Mode démo" style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; color: #4A5A66; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600">Mode démo</span>
+<div style="display: flex; gap: 6px">
+<sc-for list="{{scenarios}}" as="s" hint-placeholder-count="3">
+<button type="button" onClick="{{s.pick}}" style="flex-grow: 1; font-family: inherit; font-size: 13px; font-weight: 600; padding: 9px 8px; min-height: 44px; border-radius: 999px; cursor: pointer; border: 1px solid {{s.border}}; background: {{s.bg}}; color: {{s.fg}}">{{s.label}}</button>
+</sc-for>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</template>
+<script src="assets/dc-lite.js"></script>
+<script>
+window.DEMO_PAGES = [{"file": "index.html", "title": "Connexion"}, {"file": "tableau-de-bord.html", "title": "Tableau de bord"}, {"file": "supervision.html", "title": "Supervision temps réel"}, {"file": "suivi-sud-wifi.html", "title": "Suivi Sud Wifi"}, {"file": "acces-vacanciers.html", "title": "Accès vacanciers"}, {"file": "mon-equipe.html", "title": "Mon équipe"}, {"file": "mobile.html", "title": "Version mobile"}];
+window.DEMO_PAGE = {"file": "supervision.html", "w": 1440, "h": 1000, "props": {"scenario": "normal"}};
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { sc: null, sel: null, tests: 0 }; }
+  renderVals() {
+    const NODES = [["Borne Wifi 1", 13.85, 13.79, "ap"], ["Borne Wifi 2", 23.58, 11.97, "ap"], ["Borne Wifi 3", 29.87, 12.47, "ap"], ["Borne Wifi 4", 38.16, 15.2, "ap"], ["Borne Wifi 5", 48.33, 16.28, "ap"], ["Borne Wifi 6", 65.56, 15.2, "ap"], ["Borne Wifi 7", 82.35, 14.12, "ap"], ["Borne Wifi 8", 76.61, 11.88, "ap"], ["Borne Wifi 9", 11.09, 23.5, "ap"], ["Borne Wifi 10", 29.76, 24.08, "ap"], ["Borne Wifi 11", 79.04, 22.59, "ap"], ["Borne Wifi 12", 87.44, 26.99, "ap"], ["Borne Wifi 13", 77.82, 32.21, "ap"], ["Borne Wifi 14", 90.42, 36.45, "ap"], ["Borne Wifi 15", 92.85, 48.89, "ap"], ["Borne Wifi 16", 86.0, 50.31, "ap"], ["Borne Wifi 17", 35.51, 59.85, "ap"], ["Borne Wifi 18", 44.35, 63.25, "ap"], ["Borne Wifi 19", 60.26, 63.75, "ap"], ["Borne Wifi 20", 70.42, 66.57, "ap"], ["Borne Wifi 21", 42.03, 45.82, "ap"], ["Borne Wifi 22", 34.51, 43.5, "ap"], ["Borne Wifi 23", 30.54, 43.67, "ap"], ["Borne Wifi 24", 34.74, 53.29, "ap"], ["Borne Wifi 25", 74.73, 52.71, "ap"], ["Borne Wifi 26", 85.01, 43.33, "ap"], ["Borne Wifi 27", 64.57, 72.63, "ap"], ["Borne Wifi 28", 71.42, 73.62, "ap"], ["Borne Wifi 29", 85.67, 72.05, "ap"], ["Borne Wifi 30", 79.59, 79.93, "ap"], ["Borne Wifi 31", 16.84, 50.47, "ap"], ["Borne Wifi 32", 9.32, 52.55, "ap"], ["Borne Wifi 33", 5.35, 47.9, "ap"], ["Borne Wifi 34", 9.55, 47.57, "ap"], ["Borne Wifi 35", 6.23, 41.76, "ap"], ["Borne Wifi 36", 11.09, 41.01, "ap"], ["Borne Wifi 37", 70.64, 36.7, "ap"], ["Borne Wifi 38", 67.88, 35.78, "ap"], ["Borne Wifi 39", 66.45, 39.19, "ap"], ["Borne Wifi 40", 65.67, 43.92, "ap"], ["Borne Wifi 41", 80.26, 58.44, "ap"], ["Borne Wifi 42", 67.88, 56.03, "ap"], ["Borne Wifi 43", 63.02, 57.11, "ap"], ["Borne Wifi 44", 58.27, 57.77, "ap"], ["Borne Wifi 45", 54.4, 60.68, "ap"], ["Borne Wifi 46", 46.78, 59.02, "ap"], ["Borne Wifi 47", 41.14, 60.18, "ap"], ["Borne Wifi 48", 38.38, 63.67, "ap"], ["Borne Wifi 49", 79.37, 73.54, "ap"], ["Borne Wifi 50", 95.83, 63.58, "ap"], ["Borne Wifi 51", 75.62, 42.75, "ap"], ["Borne Wifi 52", 78.38, 60.26, "ap"], ["Borne Wifi 53", 60.04, 25.49, "ap"], ["Borne Wifi 54", 43.02, 24.08, "ap"], ["Borne Wifi 55", 72.08, 18.02, "ap"], ["Borne Wifi 56", 46.78, 33.96, "ap"], ["Borne Wifi 57", 46.56, 36.78, "ap"], ["Borne Wifi 58", 39.27, 35.2, "ap"], ["Borne Wifi 59", 30.76, 34.7, "ap"], ["Borne Wifi 60", 25.9, 32.38, "ap"], ["Borne Wifi 61", 22.47, 31.22, "ap"], ["Borne Wifi 62", 16.51, 30.47, "ap"], ["Borne Wifi 63", 21.7, 38.02, "ap"], ["Borne Wifi 64", 50.87, 76.78, "ap"], ["Borne Wifi 65", 85.45, 54.37, "ap"], ["Borne Wifi 66", 56.17, 35.12, "ap"], ["Borne Wifi 67", 24.79, 43.92, "ap"], ["Borne Wifi 68", 33.63, 50.64, "ap"], ["Borne Wifi 69", 81.58, 66.4, "ap"], ["Borne Wifi 70", 90.86, 63.25, "ap"], ["Coffret fibre 1", 70.86, 18.69, "fo"], ["Coffret fibre 2", 61.36, 23.75, "fo"], ["Coffret fibre 3", 65.67, 14.29, "fo"], ["Coffret fibre 4", 22.25, 31.47, "fo"], ["Coffret fibre 5", 18.05, 36.2, "fo"], ["Coffret fibre 6", 29.43, 57.28, "fo"], ["Coffret fibre 7", 44.02, 53.38, "fo"], ["Coffret fibre 8", 74.29, 53.54, "fo"], ["Coffret fibre 9", 79.15, 73.79, "fo"], ["Coffret fibre 10", 59.37, 63.91, "fo"], ["Coffret fibre 11", 58.6, 80.59, "fo"], ["Coffret fibre 12", 49.76, 84.58, "fo"], ["Coffret fibre 13", 8.0, 44.99, "fo"], ["Coffret fibre 14", 54.84, 49.56, "fo"], ["Coffret fibre 15", 41.81, 27.4, "fo"], ["Coffret fibre 16", 47.55, 24.91, "fo"], ["Coffret fibre 17", 10.54, 14.62, "fo"]];
+    const sc = this.state.sc ?? (this.props.scenario || 'normal');
+    const W = 744, H = 700;
+    const alertSet = ['Borne Wifi 23', 'Borne Wifi 41'];
+    const stateOf = (n) => {
+      if (n[3] !== 'ap') return 'fo';
+      if (sc === 'grave' && n[2] < 24) return 'down';
+      if (sc === 'alerte' && alertSet.indexOf(n[0]) >= 0) return 'warn';
+      return 'ok';
+    };
+    const ST = {
+      ok: { bg: '#1E8E4E', fg: '#FFFFFF', sym: '✓', label: 'répond' },
+      warn: { bg: '#F5A40F', fg: '#0E2A38', sym: '!', label: 'ne répond plus, Sud Wifi intervient' },
+      down: { bg: '#C8322B', fg: '#FFFFFF', sym: '✕', label: 'zone coupée' },
+      fo: { bg: '#007EB1', fg: '#FFFFFF', sym: '', label: 'coffret fibre' }
+    };
+    const selName = this.state.sel;
+    const marks = NODES.map((n) => {
+      const k = stateOf(n), st = ST[k], ap = n[3] === 'ap', size = ap ? 18 : 12;
+      return { name: n[0], label: st.label, bg: st.bg, fg: st.fg, sym: st.sym, size: size + 'px', radius: ap ? '50%' : '3px',
+        left: (n[1] / 100 * W - size / 2) + 'px', top: (n[2] / 100 * H - size / 2) + 'px',
+        ring: selName === n[0] ? '#0E2A38' : '#FFFFFF', pick: () => this.setState({ sel: n[0] }) };
+    });
+    const aps = NODES.filter((n) => n[3] === 'ap');
+    const okCount = aps.filter((n) => stateOf(n) === 'ok').length;
+    const alertCount = aps.length - okCount;
+    const S = {
+      normal: { bg: '#E9F6EE', border: '#A9D9BA', title: 'Toutes les bornes répondent', text: 'Le réseau du camping fonctionne normalement. Sud Wifi teste chaque borne toutes les 60 secondes.' },
+      alerte: { bg: '#FEF3D6', border: '#FAC420', title: '2 bornes ne répondent plus', text: 'Bornes Wifi 23 et 41. Sud Wifi est prévenu et intervient à distance. Les vacanciers basculent sur les bornes voisines.' },
+      grave: { bg: '#FBE9E7', border: '#E8A49E', title: 'Zone plage coupée', text: 'Toutes les bornes côté plage ne répondent plus : coupure probable de la liaison fibre de la zone. Intervention prioritaire de Sud Wifi en cours.' }
+    };
+    let sel = { name: 'Touchez un équipement', text: 'Sélectionnez une borne ou un coffret sur le plan pour voir son état.' };
+    const found = NODES.find((n) => n[0] === selName);
+    if (found) {
+      const k = stateOf(found);
+      sel = { name: found[0], text: k === 'fo' ? 'Coffret fibre de distribution. Non testé directement : son état se déduit des bornes qu\'il alimente.'
+        : k === 'ok' ? 'Répond normalement au dernier test.' : k === 'warn' ? 'Ne répond plus depuis 2 tests consécutifs. Sud Wifi intervient.' : 'Zone coupée : intervention prioritaire en cours.' };
+    }
+    const PILL = { normal: ['#1E8E4E', '#FFFFFF'], alerte: ['#F5A40F', '#0E2A38'], grave: ['#C8322B', '#FFFFFF'] };
+    const scenarios = [['normal', 'Normal'], ['alerte', 'Alerte'], ['grave', 'Grave']].map(([id, label]) => {
+      const on = sc === id;
+      return { label, pick: () => this.setState({ sc: id, sel: null }), bg: on ? PILL[id][0] : '#FFFFFF', fg: on ? PILL[id][1] : '#0E2A38', border: on ? PILL[id][0] : '#D6CFC1' };
+    });
+    return { marks, okCount, apCount: aps.length, alertCount, foCount: NODES.length - aps.length,
+      kpiColor: alertCount ? '#B35A10' : '#1E8E4E', status: S[sc], sel, scenarios,
+      lastTest: this.state.tests ? 'à l\'instant' : 'il y a 42 s', retest: () => this.setState({ tests: this.state.tests + 1 }) };
+  }
+}
+window.Component = Component;
+</script>
+</body>
+</html>

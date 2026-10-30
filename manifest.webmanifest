@@ -1,0 +1,22 @@
+{
+  "name": "Sud Wifi — Espace client (démo SETT)",
+  "short_name": "Sud Wifi démo",
+  "lang": "fr",
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#06405C",
+  "theme_color": "#06405C",
+  "icons": [
+    {
+      "src": "assets/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
