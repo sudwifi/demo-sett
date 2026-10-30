@@ -1,4 +1,4 @@
-const CACHE = 'sudwifi-demo-sett-v1';
+const CACHE = 'sudwifi-demo-sett-v2';
 const FILES = [
  "./",
  "acces-vacanciers.html",
